@@ -1,0 +1,145 @@
+/* CSS Variables for consistency */
+:root {
+  --primary-color: #ee7c2b;
+  --logo-color: #3c6658;
+  --text-light: #ffffff;
+  --text-dark: #1a1a1a;
+  --nav-bg: #ffffff;
+  --nav-height: 70px;
+  --nav-height-mobile: 60px;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --radius: 8px;
+  --font-brand: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Base Styles */
+.landing-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background-color: var(--nav-bg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Brand Section */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--logo-color);
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: var(--font-brand);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Sign In Button */
+.sign-in-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 24px;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.sign-in-btn:hover {
+  background-color: #d66a1f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(238, 124, 43, 0.3);
+}
+
+.sign-in-btn:active {
+  transform: translateY(0);
+}
+
+.sign-in-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Tablet & Mobile Optimization */
+@media (max-width: 768px) {
+  .landing-nav {
+    height: var(--nav-height-mobile);
+  }
+
+  .nav-container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .sign-in-btn {
+    height: 36px;
+    padding: 0 16px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 1.1rem;
+  }
+
+  .sign-in-btn {
+    padding: 0 12px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+  .brand-name {
+    display: none; /* Or use a short abbreviation */
+  }
+}
