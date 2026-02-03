@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './LandingNav.css';
 
 const LandingNav = ({ onSignIn }) => {
@@ -9,14 +10,15 @@ const LandingNav = ({ onSignIn }) => {
           <div className="brand-logo" aria-hidden="true" />
           <h1 className="brand-name">The Seaside Bistro</h1>
         </div>
-
+        <Link to="/sign-in" style={{ textDecoration: 'none' }}>
         <button 
           className="sign-in-btn"
-          onClick={onSignIn}
+          
           aria-label="Sign in to your account"
         >
           Sign In
         </button>
+        </Link>
       </div>
     </nav>
   );
