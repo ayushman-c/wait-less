@@ -263,3 +263,66 @@
     display: none; /* Hide on very small screens or use icon */
   }
 }
+/* ============================================
+   CART BUTTON
+   ============================================ */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.cart-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #1a1a1a;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.cart-btn:hover {
+  background: rgba(238, 124, 43, 0.1);
+}
+
+.cart-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #ee7c2b;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile adjustment */
+@media (max-width: 480px) {
+  .nav-actions {
+    gap: 0.5rem;
+  }
+  
+  .cart-btn {
+    width: 40px;
+    height: 40px;
+  }
+}

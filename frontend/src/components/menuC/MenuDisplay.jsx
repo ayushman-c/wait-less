@@ -1,28 +1,41 @@
 import { useState, useEffect } from 'react';
+import { useCart } from '../../context/CartContext';
 import { fetchDishesByCategory } from '../../api/menuApi';
 import './MenuDisplay.css';
 
 const MenuDisplay = ({ category }) => {
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  // 🔴 NEW: Get add function from context
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const loadDishes = async () => {
       setLoading(true);
-      const data = await fetchDishesByCategory(category);
-      setDishes(data);
-      setLoading(false);
+      setError(null);
+      
+      try {
+        const data = await fetchDishesByCategory(category);
+        setDishes(data);
+      } catch (err) {
+        setError('Failed to load menu. Please try again.');
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadDishes();
   }, [category]);
 
   if (loading) return <div className="menu-loading">Loading menu...</div>;
+  if (error) return <div className="menu-error">{error}</div>;
 
   if (dishes.length === 0) {
     return (
       <div className="menu-empty">
-        <h3>No items found</h3>
+        <h3>No items in this category</h3>
         <p>Check back later for new additions!</p>
       </div>
     );
@@ -40,6 +53,14 @@ const MenuDisplay = ({ category }) => {
               <span className="dish-price">₹{dish.price}</span>
             </div>
             <p>{dish.description}</p>
+            
+            {/* 🔴 NEW: Add to Cart Button */}
+            <button 
+              className="add-to-cart-btn"
+              onClick={() => addToCart(dish)}
+            >
+              Add to Order
+            </button>
           </div>
         </article>
       ))}
